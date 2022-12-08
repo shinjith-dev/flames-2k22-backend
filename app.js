@@ -8,8 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (request, response) => {
-  console.log(request.headers.authorization);
-  console.log(`Bearer ${process.env.TOKEN}`);
 
   if (request?.headers?.authorization === `Bearer ${process.env.TOKEN}`) {
     authorize()
