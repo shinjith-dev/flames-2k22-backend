@@ -70,11 +70,12 @@ async function authorize() {
  * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
-async function getData(auth) {
+
+async function getScore(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: '1uMlJR9hbh_b2DITGk7w_P4NmNZAEGCtaUXQYZShYwtY',
-    range: 'Sheet1!A1:B1',
+    range: 'Score!A:C',
   });
   const rows = res.data.values;
   if (!rows || rows.length === 0) {
@@ -83,4 +84,31 @@ async function getData(auth) {
 return rows;
 }
 
-module.exports = {authorize,getData}
+async function getResultMen(auth) {
+  const sheets = google.sheets({version: 'v4', auth});
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: '1uMlJR9hbh_b2DITGk7w_P4NmNZAEGCtaUXQYZShYwtY',
+    range: 'Result!A:D',
+  });
+  const rows = res.data.values;
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+return rows;
+}
+
+async function getResultWomen(auth) {
+  const sheets = google.sheets({version: 'v4', auth});
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: '1uMlJR9hbh_b2DITGk7w_P4NmNZAEGCtaUXQYZShYwtY',
+    range: 'Result!G:J',
+  });
+  const rows = res.data.values;
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+return rows;
+}
+
+
+module.exports = {authorize,getScore,getResultMen,getResultWomen}
