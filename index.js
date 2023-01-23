@@ -3,7 +3,7 @@ const app = require("./app");
 const { PORT } = require("./config");
 const { authorize } = require("./startSheet");
 
-authorize()
+// authorize()
 
 const server = http.createServer(app);
 
