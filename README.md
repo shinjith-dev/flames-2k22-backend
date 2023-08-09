@@ -1,2 +1,2 @@
 # flames-2k22-backend
-(ok)[]
+(Frontend Repository)[https://github.com/the3plet/flames-2k22-lbscek]
